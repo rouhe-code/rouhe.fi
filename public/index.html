@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="UTF-8" />
+     <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app" style="display:none">
+      <div id="layout-container">
+        <div id="layout-header">
+          <div id="logo">
+            <h1>{{configurations.pageName}}</h1>
+          </div>
+          <div id="language-select">
+            <h4 v-on:click="changeLanguage">{{translations.changeToLanguage}}</h4>
+          </div>
+        </div>
+        <div id="layout-content">
+          <h2>{{translations.services}}</h2>
+          <div v-html="configurations.getTranslatedConfigurations(translations.languageCode).servicesDescription"></div>
+
+          <Person v-for="person in configurations.getTranslatedConfigurations(translations.languageCode).persons"
+                  :person="person"
+                  :translations="translations"
+                  :key="person.name" />
+        </div>
+        <div id="layout-footer">
+          <div class="footer-box">
+            <h4>{{configurations.pageName}}</h4>
+            <p>
+              {{translations.footer.companyInformation.privateTrader}}: {{configurations.privateTrader}}<br />
+              {{translations.footer.companyInformation.businessId}}: {{configurations.businessId}}
+            </p>
+          </div>
+          <div class="footer-box">
+            <h4>{{translations.footer.contactInformation.title}}</h4>
+            <p>
+              {{translations.footer.contactInformation.email}}:
+              {{configurations.email}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script> <!-- Production Vue -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--> <!-- Development Vue -->
+
+    <!-- Vue components -->
+    <script src="js/components/Degree.js"></script>
+    <script src="js/components/Person.js"></script>
+
+    <!-- Configurations -->
+    <script src="config.js"></script>
+
+    <!-- Javascript -->
+    <script src="js/translations/fi.js"></script>
+    <script src="js/translations/en.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

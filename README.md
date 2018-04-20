@@ -1,2 +1,2 @@
 # rouhe.fi
-The main website of rouhe
+The main website of rouhe. This is very simple single page website for showing the basic information about the business. The only tool this page uses is Vue on top of vanilla JS, HTML and CSS.
