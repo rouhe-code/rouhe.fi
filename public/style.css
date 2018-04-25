@@ -74,18 +74,19 @@ body {
   background-color: #878f99;
   font-family: 'Open Sans', sans-serif;
   grid-area: footer;
-  padding: calc(2.5rem - 1vw) 0;
+  padding: 20px 0;
 }
 
 #layout-footer h4 {
   color: #dddddd;
   font-size: 28px;
-  margin: 0px;
+  margin: calc(1em - 1.5vw) 0;
 }
 
 #layout-footer p {
   color: #dddddd;
   font-size: 24px;
+  margin: calc(1em - 1.5vw) 0;
 }
 
 #layout-footer .footer-box {
