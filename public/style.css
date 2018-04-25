@@ -74,7 +74,7 @@ body {
   background-color: #878f99;
   font-family: 'Open Sans', sans-serif;
   grid-area: footer;
-  padding: 20px 0;
+  padding: calc(2.5rem - 1vw) 0;
 }
 
 #layout-footer h4 {
@@ -142,10 +142,6 @@ body {
       "footer";
   }
 
-  #layout-footer {
-    padding: 1em 0;
-  }
-
   #layout-content h2 {
     font-size: calc(32px + (42 - 32) * (100vw - 576px) / (768 - 576));
   }
@@ -183,21 +179,35 @@ body {
 @media screen and (max-width: 575px),
        screen and (max-device-width: 575px) {
 
+   #layout-container {
+     grid-template-rows: 150px auto max-content;
+   }
+
    #layout-content h2 {
-     font-size: calc(36px + (44 - 36) * (100vw - 0px) / (575 - 0));
+     font-size: calc(40px + (48 - 40) * (100vw - 0px) / (575 - 0));
    }
 
    #layout-content h3 {
-     font-size: calc(30px + (36 - 30) * (100vw - 0px) / (575 - 0));
+     font-size: calc(36px + (42 - 36) * (100vw - 0px) / (575 - 0));
    }
 
    #layout-content p,
    #layout-content li,
    #layout-footer p {
-     font-size: calc(24px + (28 - 24) * (100vw - 0px) / (575 - 0));
+     font-size: calc(30px + (36 - 30) * (100vw - 0px) / (575 - 0));
    }
 
    #layout-footer h4 {
-     font-size: calc(26px + (32 - 26) * (100vw - 0px) / (575 - 0));
+     font-size: calc(32px + (38 - 32) * (100vw - 0px) / (575 - 0));
+   }
+
+   #layout-header h1 {
+     font-size: 62px;
+     line-height: 150px;
+   }
+
+   #layout-header h4 {
+     font-size: 34px;
+     line-height: 150px;
    }
 }
