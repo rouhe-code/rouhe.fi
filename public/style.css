@@ -1,3 +1,13 @@
+/*
+  Responsive fonts are using the following formula for determining size:
+  calc(
+    [minFontSize]px
+    + ([maxFontSize] - [minFontSize])
+    * (100vw - [maxScreenSize]px)
+    / ([maxScreenSize] - [minScreenSize])
+  )
+*/
+
 body {
   margin: 0;
   background-color: #fdfdfd;
@@ -16,34 +26,44 @@ body {
 #layout-container {
   display: grid;
   height: 100vh;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 720px 1fr;
   grid-template-rows: 70px auto max-content;
   grid-template-areas:
-    "header"
-    "content"
-    "footer";
+    "header header header"
+    "left-column content right-column"
+    "footer footer footer";
 }
 
 #layout-content {
   grid-area: content;
-  padding: 20px 0;
+  padding: 0 0 20px 0;
 }
 
-#layout-content h2,
-#layout-content h3 {
+#layout-content h2 {
+  font-size: 36px;
   font-family: 'Assistant', sans-serif;
-  margin: 1em 20px;
+  margin: 0.75em 20px;
+}
+
+#layout-content h3 {
+  font-size: 32px;
+  font-family: 'Assistant', sans-serif;
+  margin: 0.75em 20px;
+}
+
+#layout-content ul {
+  margin: 0 20px;
 }
 
 #layout-content li {
   font-family: 'Assistant', sans-serif;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 #layout-content p {
   font-family: 'Assistant', sans-serif;
-  font-size: 18px;
-  margin: 1em 20px;
+  font-size: 24px;
+  margin: 1em 24px;
 }
 
 #layout-content .bold {
@@ -54,19 +74,24 @@ body {
   background-color: #878f99;
   font-family: 'Open Sans', sans-serif;
   grid-area: footer;
+  padding: 20px 0;
 }
 
 #layout-footer h4 {
-  margin: 0px;
   color: #dddddd;
+  font-size: 28px;
+  margin: 0px;
 }
 
 #layout-footer p {
   color: #dddddd;
+  font-size: 24px;
 }
 
-.footer-box {
-  margin: 20px 30px;
+#layout-footer .footer-box {
+  float: left;
+  margin: 0 30px;
+  width: 380px;
 }
 
 #layout-header {
@@ -105,19 +130,74 @@ body {
   float: left;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (max-width: 768px),
+       screen and (max-device-width: 768px) {
 
   #layout-container {
-    display: grid;
-    grid-template-columns: 1fr 720px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px auto max-content;
     grid-template-areas:
-      "header header header"
-      "left-column content right-column"
-      "footer footer footer";
+      "header"
+      "content"
+      "footer";
   }
 
-  .footer-box {
-    float: left;
-    width: 300px;
+  #layout-footer {
+    padding: 1em 0;
   }
+
+  #layout-content h2 {
+    font-size: calc(32px + (42 - 32) * (100vw - 576px) / (768 - 576));
+  }
+
+  #layout-content h3 {
+    font-size: calc(28px + (34 - 28) * (100vw - 576px) / (768 - 576));
+  }
+
+  #layout-content p,
+  #layout-content li,
+  #layout-footer p {
+    font-size: calc(24px + (28 - 24) * (100vw - 576px) / (768 - 576));
+  }
+
+  #layout-footer h4 {
+    font-size: calc(26px + (30 - 26) * (100vw - 576px) / (768 - 576));
+  }
+
+  #layout-footer .footer-box {
+    float: none;
+    width: auto;
+  }
+
+  #layout-header h1 {
+    font-size: 42px;
+    line-height: 100px;
+  }
+
+  #layout-header h4 {
+    font-size: 28px;
+    line-height: 100px;
+  }
+}
+
+@media screen and (max-width: 575px),
+       screen and (max-device-width: 575px) {
+
+   #layout-content h2 {
+     font-size: calc(36px + (44 - 36) * (100vw - 0px) / (575 - 0));
+   }
+
+   #layout-content h3 {
+     font-size: calc(30px + (36 - 30) * (100vw - 0px) / (575 - 0));
+   }
+
+   #layout-content p,
+   #layout-content li,
+   #layout-footer p {
+     font-size: calc(24px + (28 - 24) * (100vw - 0px) / (575 - 0));
+   }
+
+   #layout-footer h4 {
+     font-size: calc(26px + (32 - 26) * (100vw - 0px) / (575 - 0));
+   }
 }
